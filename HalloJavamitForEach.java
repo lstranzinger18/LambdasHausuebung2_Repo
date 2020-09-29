@@ -27,9 +27,16 @@ public class HalloJavamitForEach {
             System.out.println(string);
             
         }
+        //ForEach method des List Interface verwendet - Lambda-Ausdruck
         arrList.forEach((String s) -> System.out.println(s));
         
-   
+        //Methoden-Reference 
+        arrList.forEach(System.out::println);
+        
+        
+        
+        
+        
     }
     
     
