@@ -26,10 +26,9 @@ public class HalloJavamitForEach {
         for (String string : arrList) {
             System.out.println(string);
             
-            
-            
-            
         }
+        arrList.forEach((String s) -> System.out.println(s));
+        
    
     }
     
