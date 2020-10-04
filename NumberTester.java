@@ -29,7 +29,7 @@ public class NumberTester {
 
     public void setOddEvenTester(NumberTest oddTester) {
         this.oddTester = oddTester;
-        this.oddTester = 
+       
 
     }
 
@@ -44,8 +44,9 @@ public class NumberTester {
 
     public void testFile() {
 
-        
+      
         
     }
+   
 
 }
