@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class MainCalcs {
 
     public static void main(String[] args) {
-
+        //RATIONAL CALULATOR
         RationalCalculator rn = new RationalCalculator(((Number x, Number y) -> {
 
             double x1 = x.getA() + y.getA();
@@ -53,7 +53,7 @@ public class MainCalcs {
             n.setB(y1);
             return n;
         }));
-
+        //VECTOR CALCULATOR
         VectorCalculator vn = new VectorCalculator(((Number x, Number y) -> {
 
             double x1 = x.getA() + y.getA();
@@ -92,13 +92,49 @@ public class MainCalcs {
             n.setB(y1);
             return n;
         }));
+        //COMPLEX CALCULATOR
+        ComplexCalculator cc = new ComplexCalculator(((Number x, Number y)
+                -> {
+            double x1 = x.getA() + y.getA();
+            double y1 = x.getB() + y.getB();
+
+            Number n = new Number();
+            n.setA(x1);
+            n.setB(y1);
+            return n;
+
+        }), ((x, y) -> {
+
+            double x1 = x.getA() - y.getA();
+            double y1 = x.getB() - y.getB();
+
+            Number n = new Number();
+            n.setA(x1);
+            n.setB(y1);
+            return n;
+
+        }), ((x, y) -> {
+            double x1 = x.getA() * y.getA() + x.getA() * y.getB();
+            double y1 = x.getB() * y.getA() + x.getB() * y.getA();
+
+            Number n = new Number();
+            n.setA(x1);
+            n.setB(y1);
+            return n;
+
+        }), ((x, y) -> {
+            double x1 = x.getA() * y.getA() + x.getB() * y.getB();
+            double y1 = x.getB() * y.getA() - x.getA() * y.getB();
+
+            Number n = new Number();
+            n.setA(x1);
+            n.setB(y1);
+            return n;
+        }));
+
         MainCalcs mc = new MainCalcs();
-       
-        
-        
-        
-        
-         Scanner sc = new Scanner(System.in);
+
+        Scanner sc = new Scanner(System.in);
         int ausw = 0;
 
         while (ausw != 4) {
@@ -111,10 +147,13 @@ public class MainCalcs {
             System.out.println("Auswahl:");
 
             ausw = Integer.parseInt(sc.nextLine());
-            if(ausw == 4)
-            {System.exit(4910);}
+            if (ausw == 4) {
+                System.exit(4910);
+            }
+
             double xA;
             double xB;
+
             double yA;
             double yB;
 
@@ -127,41 +166,154 @@ public class MainCalcs {
             System.out.println("Enter number yB ->");
             yB = Double.parseDouble(sc.nextLine());
 
+            Number x = new Number();
+            x.setA(xA);
+            x.setB(xB);
+            Number y = new Number();
+            y.setA(yA);
+            y.setB(yB);
+
             int auswCalcOper;
-            
 
             System.out.print("1 − add\n"
-                    + "2 − s u b t r a c t\n"
-                    + "3 − m ul ti pl y\n"
-                    + "4 − di vi d e\n"
-                    + "5 − e n t e r numbers again");
+                    + "2 − subtract\n"
+                    + "3 − multiply\n"
+                    + "4 − divide\n"
+                    + "5 − enter numbers again");
 
             auswCalcOper = Integer.parseInt(sc.nextLine());
-            
-            
-            switch(ausw)
-            {
+
+            switch (ausw) {
                 case 1:
-                    switch(auswCalcOper)
-                        
-                    {
+                    switch (auswCalcOper) {
                         case 1:
-                            
-                            
-                        
-                        
-                    }}
-                    
-                    
-                    
-            
-            
+                            Number solAdd = rn.add.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solAdd.getA() + "\n"
+                                    + "b = " + solAdd.getB() + "\n");
+                            break;
+
+                        case 2:
+                            Number solSub = rn.subtract.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solSub.getA() + "\n"
+                                    + "b = " + solSub.getB() + "\n");
+                            break;
+
+                        case 3:
+                            Number solMul = rn.mutliply.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solMul.getA() + "\n"
+                                    + "b = " + solMul.getB() + "\n");
+                            break;
+
+                        case 4:
+                            Number solDiv = rn.divide.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solDiv.getA() + "\n"
+                                    + "b = " + solDiv.getB() + "\n");
+
+                            break;
+                        case 5:
+                            System.out.println("Enter number xA ->");
+                            xA = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number xB ->");
+                            xB = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number yA ->");
+                            yA = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number yB ->");
+                            yB = Double.parseDouble(sc.nextLine());
+                            break;
+                    }
+                case 2:
+                    switch (auswCalcOper) {
+                        case 1:
+                            Number solAdd = vn.add.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solAdd.getA() + "\n"
+                                    + "b = " + solAdd.getB() + "\n");
+                            break;
+
+                        case 2:
+                            Number solSub = vn.subtract.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solSub.getA() + "\n"
+                                    + "b = " + solSub.getB() + "\n");
+                            break;
+
+                        case 3:
+                            Number solMul = vn.mutliply.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solMul.getA() + "\n"
+                                    + "b = " + solMul.getB() + "\n");
+                            break;
+
+                        case 4:
+                            Number solDiv = vn.divide.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solDiv.getA() + "\n"
+                                    + "b = " + solDiv.getB() + "\n");
+
+                            break;
+                        case 5:
+                            System.out.println("Enter number xA ->");
+                            xA = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number xB ->");
+                            xB = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number yA ->");
+                            yA = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number yB ->");
+                            yB = Double.parseDouble(sc.nextLine());
+                            break;
+
+                    }
+                case 3:
+
+                    switch (auswCalcOper) {
+                        case 1:
+                            Number solAdd = cc.add.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solAdd.getA() + "\n"
+                                    + "b = " + solAdd.getB() + "i \n");
+                            break;
+
+                        case 2:
+                            Number solSub = cc.subtract.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solSub.getA() + "\n"
+                                    + "b = " + solSub.getB() + " i\n");
+                            break;
+
+                        case 3:
+                            Number solMul = cc.mutliply.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solMul.getA() + "\n"
+                                    + "b = " + solMul.getB() + " i\n");
+                            break;
+
+                        case 4:
+                            Number solDiv = cc.divide.calc(x, y);
+                            System.out.print("Solution:\n"
+                                    + "a = " + solDiv.getA() + "\n"
+                                    + "b = " + solDiv.getB() + " i\n");
+
+                            break;
+                        case 5:
+                            System.out.println("Enter number xA ->");
+                            xA = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number xB ->");
+                            xB = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number yA ->");
+                            yA = Double.parseDouble(sc.nextLine());
+                            System.out.println("Enter number yB ->");
+                            yB = Double.parseDouble(sc.nextLine());
+                            break;
+
+                    }
+
             }
-            
-            
-            
-            
+        }
+
     }
 
-   
 }
